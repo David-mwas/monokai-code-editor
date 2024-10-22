@@ -8,8 +8,8 @@ function LanguageSelector({ language, onSelect }) {
   const Languages = Object.entries(LANGUAGE_VERSIONS);
   return (
     <Box mb={4} ml={2}>
-      <Text fontSize="lg" fontWeight="semibold" color="white" mb={2}>
-        Select Language
+      <Text mb={2} fontSize="lg">
+       Select language
       </Text>
       <Menu isLazy>
         <MenuButton as={Button} rightIcon={<FiChevronDown />}>

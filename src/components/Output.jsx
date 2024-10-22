@@ -5,6 +5,7 @@ import { executeCode } from "../api";
 function Output({ editorRef, language }) {
   const [output, setOutput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const toast = useToast();
   const runCode = async () => {
     setLoading(true);
@@ -22,7 +23,8 @@ function Output({ editorRef, language }) {
     }
     try {
       const { run: result } = await executeCode(language, code);
-      setOutput(result?.output);
+      setOutput(result?.output?.split("\n"));
+      result?.stderr ? setIsError(true) : setIsError(false);
       console.log(result);
     } catch (error) {
       toast({
@@ -51,8 +53,17 @@ function Output({ editorRef, language }) {
       >
         Run Code
       </Button>
-      <Box height="75vh" border="1px solid" borderRadius={4} borderColor="#333">
-        {output ? output : "click 'Run Code' to dispaly here"}
+      <Box
+        p={2}
+        height="75vh"
+        border="1px solid"
+        borderRadius={4}
+        borderColor={isError ? "red.500" : "#333"}
+        color={isError ? "red.400" : ""}
+      >
+        {output
+          ? output.map((line, index) => <Text key={index}>{line}</Text>)
+          : "click 'Run Code' to dispaly here"}
       </Box>
     </Box>
   );
