@@ -1,6 +1,7 @@
 import { Box, Button, Text, useToast } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { executeCode } from "../api";
+import { FaPlay } from "react-icons/fa";
 
 function Output({ editorRef, language }) {
   const [output, setOutput] = useState("");
@@ -45,13 +46,15 @@ function Output({ editorRef, language }) {
         output
       </Text>
       <Button
+        className="flex items-center justify-center"
         onClick={runCode}
         variant="outline"
         colorScheme="green"
         mb={4}
         isLoading={loading}
       >
-        Run Code
+        <FaPlay />
+        <Text className="ml-2"> Run Code</Text>
       </Button>
       <Box
         p={2}
