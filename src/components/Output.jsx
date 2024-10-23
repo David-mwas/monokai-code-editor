@@ -26,6 +26,24 @@ function Output({ editorRef, language }) {
       const { run: result } = await executeCode(language, code);
       setOutput(result?.output?.split("\n"));
       result?.stderr ? setIsError(true) : setIsError(false);
+      if (!result?.stderr) {
+        toast({
+          title: "Code executed successfully",
+          description: "Code has been executed successfully",
+          status: "success",
+          duration: 6000,
+          isClosable: true,
+        });
+      }
+      if (result?.stderr) {
+        toast({
+          title: "An error occurred.",
+          description: "Unable to run the code",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
       console.log(result);
     } catch (error) {
       toast({
