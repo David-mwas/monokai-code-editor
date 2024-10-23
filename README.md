@@ -2,6 +2,12 @@
 
 Monokai Code Editor is a web-based code editor built using Monaco Editor, React, Chakra UI, Tailwind CSS, and integrates with the Piston API for managing packages and executing user-defined code.
 
+![alt text](public/monakaiplayground.png)
+
+![alt text](public/errorstate.png)
+
+![alt text](public/lang.png)
+
 ## Overview
 
 Monokai Code Editor provides a sleek and customizable interface for writing and executing code snippets in various programming languages. Leveraging the power of Monaco Editor, users can enjoy features like syntax highlighting, code autocompletion, and code formatting.
